@@ -1,0 +1,11 @@
+{
+  "name": "especialidad",
+  "version": "1.0.0",
+  "description": "proyecto de especialidad, ruta del sabor de la materia arquitectura y servicios web avanzados",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
