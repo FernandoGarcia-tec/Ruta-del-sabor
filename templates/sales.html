@@ -1,18 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles/stylesSales.css"> <!-- Asegúrate de que la ruta sea correcta -->
 </head>
+
 <body>
-    <h1>Sales</h1>
-    <p>Here are the products available for sale:</p>
-    <ul>
-        <li>Product 1 - $10.00</li>
-        <li>Product 2 - $15.00</li>
-        <li>Product 3 - $20.00</li>
-    </ul>
-    <p><a href="/">Go back to Home</a></p>
+  <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew"><h1 class="logo un-skew"><a href="/">La Ruta de Sabor de Comala</a></h1></span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <a href="/" class="nav-link"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+                <a href="/sales" class="nav-link"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
+
+                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
+                <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
+            </div>
+        </nav>
+    </header>
+    
+    <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew"><h1 class="logo un-skew"><a href="/">La Ruta de Sabor de Comala</a></h1></span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <a href="/" class="nav-link"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
+                <a href="/sales" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
+                <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <!-- Sección de productos destacados -->
+        <section id="featured-products" class="ecommerce-section">
+            <h2>Ofertas Destacadas</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="styles\background.webp" alt="Producto 1">
+                    <h3>Producto 1</h3>
+                    <p>$29.99</p>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="styles\background.webp" alt="Producto 2">
+                    <h3>Producto 2</h3>
+                    <p>$49.99</p>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="styles\background.webp" alt="Producto 3">
+                    <h3>Producto 3</h3>
+                    <p>$19.99</p>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Catálogo de productos -->
+        <section id="product-catalog" class="ecommerce-section">
+            <h2>Catálogo de Productos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="images/product4.jpg" alt="Producto 4">
+                    <h3>Producto 4</h3>
+                    <p>$39.99</p>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/product5.jpg" alt="Producto 5">
+                    <h3>Producto 5</h3>
+                    <p>$59.99</p>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+                <div class="product-card">
+                    <img src="images/product6.jpg" alt="Producto 6">
+                    <h3>Producto 6</h3>
+                    <p>$24.99</p>
+                    <button class="add-to-cart">Agregar al carrito</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de carrito de compras -->
+        <section id="shopping-cart" class="ecommerce-section">
+            <h2>Tu Carrito</h2>
+            <div class="cart-items">
+                <p>No hay artículos en el carrito.</p>
+            </div>
+            <button class="checkout-btn">Proceder al Pago</button>
+        </section>
+    </main>
 </body>
 </html>
