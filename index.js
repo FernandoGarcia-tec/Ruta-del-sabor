@@ -2,9 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
+const admin = require('firebase-admin'); // Importa Firebase Admin
 
 const app = express();
 const PORT = 3000;
+
+// Inicializa Firebase Admin
+admin.initializeApp({
+    credential: admin.credential.applicationDefault(), // Asegúrate de tener configuradas las credenciales
+    databaseURL: 'https://rutasabor-25dd3.firebaseio.com' // Cambia esto por tu URL de base de datos
+});
+
+const db = admin.firestore(); // Inicializa Firestore
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -68,6 +77,18 @@ app.post('/register', (req, res) => {
 // Sales
 app.get('/sales', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/sales.html'));
+});
+
+// Agregar un producto
+app.post('/add-product', async (req, res) => {
+    const { name, price } = req.body; // Asegúrate de tener estos campos en tu formulario
+    const productRef = db.collection('products').doc(); // Crea una referencia a un nuevo documento
+    await productRef.set({
+        name: name,
+        price: price,
+        createdAt: admin.firestore.FieldValue.serverTimestamp() // Añade una marca de tiempo
+    });
+    res.send('Product added successfully! <a href="/sales">Go back to sales</a>');
 });
 
 // Logout

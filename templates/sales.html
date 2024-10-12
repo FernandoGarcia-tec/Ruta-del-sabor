@@ -9,22 +9,6 @@
 </head>
 
 <body>
-  <header id="nav-wrapper">
-        <nav id="nav">
-            <div class="nav left">
-                <span class="gradient skew"><h1 class="logo un-skew"><a href="/">La Ruta de Sabor de Comala</a></h1></span>
-                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
-            </div>
-            <div class="nav right">
-                <a href="/" class="nav-link"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
-                <a href="/sales" class="nav-link"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
-
-                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
-                <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
-            </div>
-        </nav>
-    </header>
-    
     <header id="nav-wrapper">
         <nav id="nav">
             <div class="nav left">
@@ -33,14 +17,33 @@
             </div>
             <div class="nav right">
                 <a href="/" class="nav-link"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
-                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
                 <a href="/sales" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
+
+                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
                 <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
             </div>
         </nav>
     </header>
     
+   
+    
     <main>
+         <!-- Sección para publicar productos -->
+         <section id="publish-product" class="ecommerce-section">
+            <h2>Publicar Nuevo Producto</h2>
+            <form id="product-form">
+                <label for="product-name">Nombre del Producto:</label>
+                <input type="text" id="product-name" name="name" required><br>
+                
+                <label for="product-price">Precio del Producto:</label>
+                <input type="number" id="product-price" name="price" required><br>
+
+                <label for="product-image">URL de la Imagen:</label>
+                <input type="text" id="product-image" name="image" required><br>
+                
+                <button type="submit">Publicar Producto</button>
+            </form>
+        </section>
         <!-- Sección de productos destacados -->
         <section id="featured-products" class="ecommerce-section">
             <h2>Ofertas Destacadas</h2>
@@ -100,5 +103,13 @@
             <button class="checkout-btn">Proceder al Pago</button>
         </section>
     </main>
+     <!-- Importa el script externo -->
+     <script type="module" src="script\salesScript.js"></script>
+    
+    <footer>
+        <p>Proyecto de especialidad de arquitectura y servicios web avanzados</p>
+    </footer>
+
+
 </body>
 </html>
