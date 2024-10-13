@@ -2,96 +2,118 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
-const admin = require('firebase-admin'); // Importa Firebase Admin
+const mysql = require('mysql');
 
 const app = express();
 const PORT = 3000;
 
-// Inicializa Firebase Admin
-admin.initializeApp({
-    credential: admin.credential.applicationDefault(), // Asegúrate de tener configuradas las credenciales
-    databaseURL: 'https://rutasabor-25dd3.firebaseio.com' // Cambia esto por tu URL de base de datos
+// Crear conexión a la base de datos MySQL
+const connection = mysql.createConnection({
+    host: 'localhost', // Cambia esto si tu base de datos está en otro lugar
+    user: 'root', // Cambia esto a tu usuario de MySQL
+    password: '', // Cambia esto a tu contraseña de MySQL
+    database: 'ruta_sabor' // Cambia esto al nombre de tu base de datos
 });
 
-const db = admin.firestore(); // Inicializa Firestore
+// Conectar a la base de datos
+connection.connect((err) => {
+    if (err) {
+        console.error('Error conectando a la base de datos:', err);
+        return;
+    }
+    console.log('Conectado a la base de datos MySQL como ID ' + connection.threadId);
+});
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); // Agregar para manejar JSON
 app.use(session({
     secret: 'your_secret_key',
     resave: false,
     saveUninitialized: true
 }));
 
-// Ruta para servir archivos estáticos como HTML
+// Ruta para servir archivos estáticos
 app.use(express.static(path.join(__dirname)));
-
-// Dummy user data
-const users = {
-    user1: 'password1',
-    user2: 'password2'
-};
 
 // Rutas
 
 // Home
 app.get('/', (req, res) => {
-    if (req.session.loggedIn) {
-        res.send(`Welcome ${req.session.username}! <a href="/logout">Logout</a>`);
-    } else {
-        res.sendFile(path.join(__dirname, 'templates/home.html'));
-    }
+    res.sendFile(path.join(__dirname, 'templates/home.html'));
 });
 
-// Login
+// Página de Login
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/login.html'));
 });
-
-app.post('/login', (req, res) => {
+// Procesar Login
+app.post('/login', async (req, res) => {
     const { username, password } = req.body;
-    if (users[username] && users[username] === password) {
+
+    const query = 'SELECT * FROM users WHERE username = ?';
+    connection.query(query, [username], (err, results) => {
+        if (err) {
+            console.error('Error al procesar el login:', err);
+            return res.status(500).json({ error: 'Error al procesar el login' });
+        }
+
+        if (results.length === 0) {
+            return res.status(401).json({ error: 'Usuario no encontrado' });
+        }
+
+        const user = results[0];
+        if (user.password !== password) {
+            return res.status(401).json({ error: 'Contraseña incorrecta' });
+        }
+
+        // Si todo es correcto, establece la sesión
         req.session.loggedIn = true;
         req.session.username = username;
-        res.redirect('/');
-    } else {
-        res.send('Invalid username or password. <a href="/login">Try again</a>');
-    }
+        res.json({ success: true }); // Respuesta exitosa
+    });
 });
 
-// Register
+
+// Página de Registro
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/register.html'));
 });
 
+// Procesar Registro
 app.post('/register', (req, res) => {
-    const { username, password } = req.body;
-    if (users[username]) {
-        res.send('Username already exists. <a href="/register">Try again</a>');
-    } else {
-        users[username] = password;
-        res.send('Registration successful! <a href="/login">Login now</a>');
-    }
-});
+    const { username, password, email } = req.body;
 
-// Sales
-app.get('/sales', (req, res) => {
-    res.sendFile(path.join(__dirname, 'templates/sales.html'));
-});
+    // Verificar si el usuario ya existe
+    const checkQuery = 'SELECT * FROM users WHERE username = ?';
+    connection.query(checkQuery, [username], (err, results) => {
+        if (err) {
+            console.error('Error al verificar el usuario:', err);
+            return res.status(500).send('Error al verificar el usuario');
+        }
 
-// Agregar un producto
-app.post('/add-product', async (req, res) => {
-    const { name, price } = req.body; // Asegúrate de tener estos campos en tu formulario
-    const productRef = db.collection('products').doc(); // Crea una referencia a un nuevo documento
-    await productRef.set({
-        name: name,
-        price: price,
-        createdAt: admin.firestore.FieldValue.serverTimestamp() // Añade una marca de tiempo
+        console.log('Resultados de la verificación:', results); // Ver resultados de la verificación
+
+        if (results.length > 0) {
+            // Si el usuario ya existe, enviar un mensaje de error
+            
+            console.log('usuario ya existe');
+            return res.send('El nombre de usuario ya existe. <a href="/register">Intenta de nuevo</a>');
+        }
+
+        // Si el usuario no existe, proceder a registrarlo
+        const query = 'INSERT INTO users (username, password, email) VALUES (?, ?, ?)';
+        connection.query(query, [username, password, email], (err, results) => {
+            if (err) {
+                console.error('Error al registrar el usuario:', err);
+                return res.status(500).send('Error al registrar el usuario');
+            }
+            res.send('Registro exitoso! <a href="/login">Iniciar sesión</a>');
+        });
     });
-    res.send('Product added successfully! <a href="/sales">Go back to sales</a>');
 });
 
-// Logout
+// Cerrar sesión
 app.get('/logout', (req, res) => {
     req.session.destroy();
     res.redirect('/');
@@ -99,5 +121,5 @@ app.get('/logout', (req, res) => {
 
 // Iniciar servidor
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Servidor escuchando en http://localhost:${PORT}`);
 });
