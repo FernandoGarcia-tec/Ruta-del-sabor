@@ -73,13 +73,33 @@ app.post('/login', async (req, res) => {
         res.json({ success: true }); // Respuesta exitosa
     });
 });
+// Nueva ruta para verificar si el usuario está autenticado
+app.get('/is-authenticated', (req, res) => {
+    if (req.session.loggedIn) {
+        res.json({ authenticated: true, username: req.session.username });
+    } else {
+        res.json({ authenticated: false });
+    }
+});
 
 
 // Página de Registro
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/register.html'));
 });
+// Página de sales menu
+app.get('/salesMenu', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates/salesMenu.html'));
+});
+// Página de sales menu
+app.get('/sales', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates/sales.html'));
+});
 
+// Página de sales vendedor
+app.get('/salesV', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates/salesVendedor.html'));
+});
 // Procesar Registro
 app.post('/register', (req, res) => {
     const { username, password, email } = req.body;

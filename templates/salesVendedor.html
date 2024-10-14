@@ -18,8 +18,8 @@
             <div class="nav right">
                 <a href="/" class="nav-link"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
                 <a href="/sales" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
-
-                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
+                <a href="/login" class="nav-link"  id="welcome-message" style="display: none;"><span class="nav-link-span"><span id="username"></span></span></a>
+                <a href="/login" class="nav-link"  id="login-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
                 <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
             </div>
         </nav>
@@ -28,9 +28,41 @@
    
     
     <main>
+        <h2>.</h2>
+        <h2>.</h2>
+        <div id="showmen" style="display: none;">
+            Bienvenido, <span id="username2"></span>!
+          </div>
+        <button id="openModalBtn">Publicar Producto</button>
+
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Publicar Producto</h2>
+            <form id="productForm">
+                <label for="productName">Nombre del Producto:</label>
+                <input type="text" id="productName" name="productName" required>
+                
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" name="productDescription" required></textarea>
+                
+                <label for="productPrice">Precio:</label>
+                <input type="number" id="productPrice" name="productPrice" required>
+                
+                <label for="productImage">Imagen:</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                
+                <button type="submit">Publicar</button>
+            </form>
+            </div>
+        </div>
+
     </main>
-     
+     <!-- Enlazar el archivo JavaScript -->
+     <script src="script\autent.js"></script>
     
+     <script src="script\modal.js">
+</script>
     <footer>
         <p>Proyecto de especialidad de arquitectura y servicios web avanzados</p>
     </footer>
