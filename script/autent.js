@@ -10,15 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     loginLink.style.display = "none";
                 }
 
-                // Mostrar mensaje de bienvenida con el nombre del usuario
                 const welcomeMessage = document.getElementById("welcome-message");
                 const showmen = document.getElementById("showmen");
                 if (welcomeMessage) {
                     welcomeMessage.style.display = "block";
                     showmen.style.display = "block";
                     document.getElementById("username").textContent = data.username;
-                    document.getElementById("usernam").textContent = data.username;
 
+                    // Completar el campo de email con el email del usuario
+                    document.getElementById("productEmail").value = data.email; // Cambiado a 'value'
                 }
             }
         })

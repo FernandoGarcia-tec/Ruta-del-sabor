@@ -3,16 +3,28 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const path = require('path');
 const mysql = require('mysql');
+const multer = require('multer');
 
 const app = express();
 const PORT = 3000;
 
+// Configuración para manejar las imágenes subidas
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'uploads/'); // Carpeta donde se guardarán las imágenes subidas
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '-' + file.originalname); // Nombre único para cada archivo
+    }
+});
+const upload = multer({ storage: storage });
+
 // Crear conexión a la base de datos MySQL
 const connection = mysql.createConnection({
-    host: 'localhost', // Cambia esto si tu base de datos está en otro lugar
-    user: 'root', // Cambia esto a tu usuario de MySQL
-    password: '', // Cambia esto a tu contraseña de MySQL
-    database: 'ruta_sabor' // Cambia esto al nombre de tu base de datos
+    host: 'localhost', 
+    user: 'root', 
+    password: '', 
+    database: 'ruta_sabor' // Cambia el nombre de la base de datos si es necesario
 });
 
 // Conectar a la base de datos
@@ -26,29 +38,64 @@ connection.connect((err) => {
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); // Agregar para manejar JSON
+app.use(bodyParser.json());
 app.use(session({
-    secret: 'your_secret_key',
+    secret: 'your_secret_key', // Cambia tu clave secreta
     resave: false,
     saveUninitialized: true
 }));
 
 // Ruta para servir archivos estáticos
 app.use(express.static(path.join(__dirname)));
+app.use('/uploads', express.static('uploads')); // Ruta para acceder a las imágenes subidas
 
 // Rutas
 
-// Home
+// Página de inicio
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/home.html'));
+});
+
+// Página de ventas
+app.get('/sales', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates/sales.html'));
+});
+
+// Procesar formulario de publicación de producto
+app.post('/upload-product', upload.single('productImage'), (req, res) => {
+    const { productName, productDescription, productPrice, productEmail, productCategory, productStock, productLocation } = req.body;
+    const productImage = req.file ? '/uploads/' + req.file.filename : null; // Ruta de la imagen subida
+
+    // Consulta SQL para insertar el producto en la base de datos
+    const query = `
+        INSERT INTO producto (nombre, email, categoria, stock, precio, descripcion, imagen, ubicacion) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    connection.query(query, [
+        productName, 
+        productEmail, 
+        productCategory, 
+        productStock, 
+        productPrice, 
+        productDescription, 
+        productImage, 
+        productLocation
+    ], (err, results) => {
+        if (err) {
+            console.error('Error al insertar producto:', err);
+            return res.status(500).send('Error al publicar producto');
+        }
+        res.send('Producto publicado exitosamente! <a href="/sales">Volver a ventas</a>');
+    });
 });
 
 // Página de Login
 app.get('/login', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/login.html'));
 });
+
 // Procesar Login
-app.post('/login', async (req, res) => {
+app.post('/login', (req, res) => {
     const { username, password } = req.body;
 
     const query = 'SELECT * FROM users WHERE username = ?';
@@ -67,34 +114,46 @@ app.post('/login', async (req, res) => {
             return res.status(401).json({ error: 'Contraseña incorrecta' });
         }
 
-        // Si todo es correcto, establece la sesión
+        // Establecer la sesión
         req.session.loggedIn = true;
         req.session.username = username;
-        res.json({ success: true }); // Respuesta exitosa
+        res.json({ success: true });
     });
 });
-// Nueva ruta para verificar si el usuario está autenticado
+
+// Ruta para verificar si el usuario está autenticado
 app.get('/is-authenticated', (req, res) => {
     if (req.session.loggedIn) {
-        res.json({ authenticated: true, username: req.session.username });
+        const query = 'SELECT email FROM users WHERE username = ?';
+        connection.query(query, [req.session.username], (err, results) => {
+            if (err) {
+                console.error('Error al obtener el email:', err);
+                return res.status(500).json({ error: 'Error al obtener el email' });
+            }
+
+            if (results.length > 0) {
+                res.json({ authenticated: true, username: req.session.username, email: results[0].email });
+            } else {
+                res.json({ authenticated: true, username: req.session.username, email: null });
+            }
+        });
     } else {
         res.json({ authenticated: false });
     }
 });
 
 
-// Página de Registro
+// Página de registro
 app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/register.html'));
 });
+
+
 // Página de sales menu
 app.get('/salesMenu', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/salesMenu.html'));
 });
-// Página de sales menu
-app.get('/sales', (req, res) => {
-    res.sendFile(path.join(__dirname, 'templates/sales.html'));
-});
+
 
 // Página de sales vendedor
 app.get('/salesV', (req, res) => {
@@ -104,7 +163,6 @@ app.get('/salesV', (req, res) => {
 app.post('/register', (req, res) => {
     const { username, password, email } = req.body;
 
-    // Verificar si el usuario ya existe
     const checkQuery = 'SELECT * FROM users WHERE username = ?';
     connection.query(checkQuery, [username], (err, results) => {
         if (err) {
@@ -112,16 +170,10 @@ app.post('/register', (req, res) => {
             return res.status(500).send('Error al verificar el usuario');
         }
 
-        console.log('Resultados de la verificación:', results); // Ver resultados de la verificación
-
         if (results.length > 0) {
-            // Si el usuario ya existe, enviar un mensaje de error
-            
-            console.log('usuario ya existe');
             return res.send('El nombre de usuario ya existe. <a href="/register">Intenta de nuevo</a>');
         }
 
-        // Si el usuario no existe, proceder a registrarlo
         const query = 'INSERT INTO users (username, password, email) VALUES (?, ?, ?)';
         connection.query(query, [username, password, email], (err, results) => {
             if (err) {

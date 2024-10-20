@@ -39,21 +39,42 @@
             <div class="modal-content">
             <span class="closeBtn">&times;</span>
             <h2>Publicar Producto</h2>
-            <form id="productForm">
+            <form id="productForm" action="/upload-product" method="POST" enctype="multipart/form-data">
                 <label for="productName">Nombre del Producto:</label>
                 <input type="text" id="productName" name="productName" required>
+                
+                <label for="productEmail">Email del Proveedor:</label>
+                <input type="email" id="productEmail" name="productEmail" readonly>
+                
+                <label for="productCategory">Categoría:</label>
+                <select id="productCategory" name="productCategory" required>
+                    <option value="Turismo">Turismo</option>
+                    <option value="Comida">Comida</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Hospedaje">Hospedaje</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Otros">Otros</option>
+               
+                </select>
+                
+                <label for="productStock">Cantidad en Inventario:</label>
+                <input type="number" id="productStock" name="productStock" min="0" required>
+                
+                <label for="productPrice">Precio:</label>
+                <input type="number" id="productPrice" name="productPrice" step="0.01" required>
                 
                 <label for="productDescription">Descripción:</label>
                 <textarea id="productDescription" name="productDescription" required></textarea>
                 
-                <label for="productPrice">Precio:</label>
-                <input type="number" id="productPrice" name="productPrice" required>
-                
                 <label for="productImage">Imagen:</label>
                 <input type="file" id="productImage" name="productImage" accept="image/*" required>
                 
+                <label for="productLocation">Ubicación:</label>
+                <input type="text" id="productLocation" name="productLocation" required>
+                
                 <button type="submit">Publicar</button>
             </form>
+            
             </div>
         </div>
 
