@@ -143,6 +143,7 @@ section {
 
 .nav-link,
 .logo {
+  display: inline-block;
   padding: 0 1em;
 }
 
