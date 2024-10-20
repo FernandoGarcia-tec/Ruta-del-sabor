@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 'Comida': [],
                 'Turismo': [],
                 'Entretenimiento': [],
-                'HOTELES': [],
-                'TRANSPORTE': [],
+                'Hoteles': [],
+                'Transporte': [],
                 'Otros': []
             };
 
@@ -49,6 +49,8 @@ function loadProductsInCarousel(carouselId, products) {
                     <h5>${product.nombre}</h5>
                     <p>Stock: ${product.stock}</p>
                     <p>${product.descripcion}</p>
+                    
+                    <p>${product.ubicacion}</p>
                 </div>
             </div>
         `;
