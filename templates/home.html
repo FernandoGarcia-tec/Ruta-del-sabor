@@ -14,11 +14,11 @@
   <header id="nav-wrapper">
     <nav id="nav">
       <div class="nav left">
-        <span class="gradient skew"><h1 class="logo un-skew"><a href="#home">La Ruta de Sabor de Comala</a></h1></span>
+        <span class="gradient skew"><h1 class="logo un-skew"><a href="/">La Ruta de Sabor de Comala</a></h1></span>
         <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
       </div>
       <div class="nav right">
-        <a href="#home" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+        <a href="/" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
         <a href="/salesMenu" class="nav-link"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
         <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav"> Login</span></span></a>
         <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
@@ -64,71 +64,98 @@
   </section>
   
   <section id="Turismo" style="color: black; background-color: #888;">
-      <h2>TURISMO</h2>
-      <p>Conoce los lugares turísticos de Comala.</p>
-      <div id="turismoCarousel" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner"></div> <!-- Aquí se insertarán los productos -->
-          <a class="carousel-control-prev" href="#turismoCarousel" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#turismoCarousel" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-          </a>
+    <h2>TURISMO</h2>
+    <p>Conoce los lugares turísticos de Comala.</p>
+    <div id="turisCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" id="turismoCarousel">
+          <!-- Los productos se insertarán aquí -->
       </div>
-  </section>
+      <a class="carousel-control-prev" href="#turisCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#turisCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+      </a>
+  </div>
+</section>
+
   
   <!-- Repite lo mismo para DIVERSION, HOTELES, TRANSPORTE -->
   
 
-    <section id="DIVERSION" style="color: black; background-color: #888;">
+    <section id="Entretenimiento" style="color: black; background-color: #888;">
       <h2>DIVERSION</h2>
       <p>Conoce los lugares de diversión de Comala.</p>
-      <div id="diversionCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner"></div>
-        <a class="carousel-control-prev" href="#diversionCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+      <div id="entreCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="diversionCarousel">
+            <!-- Los productos se insertarán aquí -->
+        </div>
+        <a class="carousel-control-prev" href="#entreCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#diversionCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+        <a class="carousel-control-next" href="#entreCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="HOTELES" style="color: black; background-color: #666;">
-      <h2>HOTELES</h2>
-      <p>Conoce los hoteles de Comala.</p>
-      <div id="hotelesCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner"></div>
-        <a class="carousel-control-prev" href="#hotelesCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+    <section id="Otros" style="color: black; background-color: #aaa;">
+      <h2>Otros</h2>
+      <p>Conoce los restaurantes de Comala.</p>
+      <div id="otorsCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="Carousel">
+            <!-- Los productos se insertarán aquí -->
+        </div>
+        <a class="carousel-control-prev" href="#otorsCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#hotelesCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+        <a class="carousel-control-next" href="#otorsCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
-      </div>
-    </section>
-
-    <section id="TRANSPORTE" style="color: black; background-color: #363535;">
+    </div>
+  </section>
+  
+  <section id="Hoteles" style="color: black; background-color: #aaa;">
+    <h2>Hoteles</h2>
+    <p>Conoce los restaurantes de Comala.</p>
+    <div id="hotelCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="hotelesCarousel">
+            <!-- Los productos se insertarán aquí -->
+        </div>
+        <a class="carousel-control-prev" href="#hotelCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#hotelCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</section>
+  
+    <section id="Transporte" style="color: black; background-color: #363535;">
       <h2>TRANSPORTE</h2>
       <p>Conoce los medios de transporte de Comala.</p>
-      <div id="transporteCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner"></div>
-        <a class="carousel-control-prev" href="#transporteCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
+      <div id="transCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" id="transporteCarousel">
+            <!-- Los productos se insertarán aquí -->
+        </div>
+        <a class="carousel-control-prev" href="#transCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#transporteCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
+        <a class="carousel-control-next" href="#transCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
         </a>
-      </div>
-    </section>
+    </div>
+</section>
   </main>
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -137,5 +164,7 @@
 
   <script src="script/home.js"></script> <!-- Aquí cargarás los productos -->
 </body>
-
+<footer>
+  <p>Proyecto de especialidad de arquitectura y servicios web avanzados, propiedad de Fernando.     2024-10</p>
+</footer>
 </html>

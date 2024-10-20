@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", function() {
             const productsByCategory = {
                 'Comida': [],
                 'Turismo': [],
-                'DIVERSION': [],
+                'Entretenimiento': [],
                 'HOTELES': [],
-                'TRANSPORTE': []
+                'TRANSPORTE': [],
+                'Otros': []
             };
 
             data.forEach(product => {
@@ -26,9 +27,10 @@ document.addEventListener("DOMContentLoaded", function() {
             // Cargar productos en sus respectivos carruseles
             loadProductsInCarousel('productCarousel', productsByCategory['Comida']);
             loadProductsInCarousel('turismoCarousel', productsByCategory['Turismo']);
-            loadProductsInCarousel('diversionCarousel', productsByCategory['DIVERSION']);
-            loadProductsInCarousel('hotelesCarousel', productsByCategory['HOTELES']);
-            loadProductsInCarousel('transporteCarousel', productsByCategory['TRANSPORTE']);
+            loadProductsInCarousel('diversionCarousel', productsByCategory['Entretenimiento']);
+            loadProductsInCarousel('hotelesCarousel', productsByCategory['Hoteles']);
+            loadProductsInCarousel('transporteCarousel', productsByCategory['Transporte']);
+            loadProductsInCarousel('Carousel', productsByCategory['Otros']);
         })
         .catch(error => console.error('Error al cargar productos:', error));
 });
@@ -42,7 +44,7 @@ function loadProductsInCarousel(carouselId, products) {
         const activeClass = index === 0 ? 'active' : ''; // Hacer el primer elemento activo
         const carouselItem = `
             <div class="carousel-item ${activeClass}">
-                <img src="${product.imagen}" class="d-block w-10" alt="${product.nombre}">
+                <img src="${product.imagen}" class="d-block product-carousel-image" alt="${product.nombre}">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>${product.nombre}</h5>
                     <p>Stock: ${product.stock}</p>

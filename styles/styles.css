@@ -1,3 +1,66 @@
+.product-carousel-image {
+  object-fit: cover; /* Ajusta la imagen para que cubra el área sin deformarse */
+  height: 200px; /* Ajusta la altura según tus necesidades */
+  width: 30%; /* Asegura que la imagen ocupe el ancho completo */
+  margin-left: 200px; /* Mueve la imagen más a la derecha */
+}
+
+.carousel-caption h5 {
+  font-size: 24px; /* Tamaño de fuente para el nombre del producto */
+  font-weight: bold; /* Negrita para el nombre del producto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la legibilidad */
+  margin-left: 200px; /* Mueve la imagen más a la derecha */
+}
+
+
+.carousel-caption p {
+  font-size: 16px; /* Tamaño de fuente para la descripción */
+  color: #fff; /* Color blanco para el texto */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la legibilidad */
+  margin-left: 200px; /* Mueve la imagen más a la derecha */
+}
+
+.carousel-inner {
+  border-radius: 10px; /* Bordes redondeados para el carrusel */
+  overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+}
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute; /* Posiciona los botones dentro del contenedor del carrusel */
+    width: 600px; /* Ancho del botón */
+    height: 600px; /* Alto del botón */
+    top: 50%; /* Centrados verticalmente */
+    transform: translateY(-50%); /* Ajusta la posición */
+    color: rgba(255, 255, 255, 0.8); /* Color de las flechas */
+    z-index: 10; /* Asegúrate de que estén por encima de otros elementos */
+}
+
+.carousel-control-prev {
+    left: 20px; /* Ajusta este valor para mover el botón más a la izquierda */
+}
+
+.carousel-control-next {
+    right: 10px; /* Ajusta este valor para mover el botón más a la derecha */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 100px; /* Ancho del icono */
+    height: 100px; /* Alto del icono */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro para las flechas */
+    border-radius: 50%; /* Bordes redondeados para las flechas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Aumentar el tamaño del texto en el botón */
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+    font-size: 24px; /* Tamaño de la flecha */
+}
+
+
 button {
   background: none;
   box-shadow: none;
@@ -15,14 +78,19 @@ html {
 }
 
 body {
-    background-image: url('styles/comala.webp'); /* Cambia esto a la ruta de tu imagen */
-    background-size: cover; /* Asegúrate de que la imagen cubra todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
-    color: #fff; /* Cambia el color del texto si es necesario */
-    line-height: 1.5em;
-    margin: 0;
-    padding: 0;
+  background-image: url('styles/comala.webp');
+  /* Cambia esto a la ruta de tu imagen */
+  background-size: cover;
+  /* Asegúrate de que la imagen cubra todo el fondo */
+  background-position: center;
+  /* Centra la imagen */
+  background-repeat: no-repeat;
+  /* Evita que la imagen se repita */
+  color: #fff;
+  /* Cambia el color del texto si es necesario */
+  line-height: 1.5em;
+  margin: 0;
+  padding: 0;
 }
 
 section {
@@ -60,6 +128,7 @@ section {
   height: 4em;
   overflow: hidden;
 }
+
 #nav.nav-visible {
   height: 100%;
   overflow: auto;
@@ -86,6 +155,7 @@ span.gradient {
   right: 1em;
   margin-right: auto;
 }
+
 span.gradient:hover {
   animation-name: logo-hover;
   animation-duration: 0.3s;
@@ -100,7 +170,10 @@ h1.logo {
   color: #ffffff;
 }
 
-h1.logo a, a:active, a:hover, a:visited {
+h1.logo a,
+a:active,
+a:hover,
+a:visited {
   text-decoration: none;
   color: #ffffff;
 }
@@ -111,7 +184,9 @@ h1.logo a, a:active, a:hover, a:visited {
   border-top: 0.5px solid #ddd;
 }
 
-a:link, a:visited, a:active {
+a:link,
+a:visited,
+a:active {
   text-decoration: none;
   color: #f15337;
 }
@@ -133,242 +208,221 @@ a:hover {
 }
 
 @import 'https://fonts.googleapis.com/css?family=Raleway';
-div.container
-{
-    font-family: Raleway;
-    margin: 0 auto;
-	padding: 2em 3em;
-	text-align: center;
+
+div.container {
+  font-family: Raleway;
+  margin: 0 auto;
+  padding: 2em 3em;
+  text-align: center;
 }
 
-div.container a
-{
-    color: #FFF;
-    text-decoration: none;
-    font: 20px Raleway;
-    margin: 0px 10px;
-    padding: 10px 10px;
-    position: relative;
-    z-index: 0;
-    cursor: pointer;
+div.container a {
+  color: #FFF;
+  text-decoration: none;
+  font: 20px Raleway;
+  margin: 0px 10px;
+  padding: 10px 10px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
 }
 
-.red
-{
-    background: #f44336;
+.red {
+  background: #f44336;
 }
 
 
-.indigo
-{
-    background: #3f51b5;
+.indigo {
+  background: #3f51b5;
 }
 
-.blue
-{
-    background: linear-gradient(45deg, #f894c6, #ed7979);
+.blue {
+  background: linear-gradient(45deg, #f894c6, #ed7979);
 }
 
-.cyan
-{
-    background: #00bcd4;
+.cyan {
+  background: #00bcd4;
 }
 
-.teal
-{
-    background: #009688;
+.teal {
+  background: #009688;
 }
 
-.green
-{
-    background: #4caf50;
+.green {
+  background: #4caf50;
 }
 
-.lightGreen
-{
-    background: #8bc34a;
+.lightGreen {
+  background: #8bc34a;
 }
 
-.lime
-{
-    background: #c0ca33;
+.lime {
+  background: #c0ca33;
 }
 
-.yellow
-{
-    background: #fdd835;
+.yellow {
+  background: #fdd835;
 }
 
-.amber
-{
-    background: #ffc107;
+.amber {
+  background: #ffc107;
 }
 
-.orange
-{
-    background: #ff9800
+.orange {
+  background: #ff9800
 }
 
-.deepOrange
-{
-    background: #ff5722;
+.deepOrange {
+  background: #ff5722;
 }
 
-.brown
-{
-    background: #795548;
+.brown {
+  background: #795548;
 }
 
-.gray
-{
-    background: #9e9e9e;
+.gray {
+  background: #9e9e9e;
 }
 
 /* Top and Bottom borders go out */
-div.topBotomBordersOut a:before, div.topBotomBordersOut a:after
-{
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 2px;
-    background: #FFF;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
+div.topBotomBordersOut a:before,
+div.topBotomBordersOut a:after {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #FFF;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
 }
 
-div.topBotomBordersOut a:before
-{
-    top: 0px;
-    transform: translateY(10px);
+div.topBotomBordersOut a:before {
+  top: 0px;
+  transform: translateY(10px);
 }
 
-div.topBotomBordersOut a:after
-{
-    bottom: 0px;
-    transform: translateY(-10px);
+div.topBotomBordersOut a:after {
+  bottom: 0px;
+  transform: translateY(-10px);
 }
 
-div.topBotomBordersOut a:hover:before, div.topBotomBordersOut a:hover:after
-{
-    opacity: 1;
-    transform: translateY(0px);
+div.topBotomBordersOut a:hover:before,
+div.topBotomBordersOut a:hover:after {
+  opacity: 1;
+  transform: translateY(0px);
 }
 
 /* Top and Bottom borders come in */
-div.topBotomBordersIn a:before, div.topBotomBordersIn a:after
-{
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 2px;
-    background: #FFF;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
+div.topBotomBordersIn a:before,
+div.topBotomBordersIn a:after {
+  position: absolute;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #FFF;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
 }
 
-div.topBotomBordersIn a:before
-{
-    top: 0px;
-    transform: translateY(-10px);
+div.topBotomBordersIn a:before {
+  top: 0px;
+  transform: translateY(-10px);
 }
 
-div.topBotomBordersIn a:after
-{
-    bottom: 0px;
-    transform: translateY(10px);
+div.topBotomBordersIn a:after {
+  bottom: 0px;
+  transform: translateY(10px);
 }
 
-div.topBotomBordersIn a:hover:before, div.topBotomBordersIn a:hover:after
-{
-    opacity: 1;
-    transform: translateY(0px);
+div.topBotomBordersIn a:hover:before,
+div.topBotomBordersIn a:hover:after {
+  opacity: 1;
+  transform: translateY(0px);
 }
+
 /* Top border go down and Left border appears */
-div.topLeftBorders a:before
-{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 2px;
-    height: 0px;
-    background: #FFF;
-    content: "";
-    opacity: 1;
-    transition: all 0.3s;
+div.topLeftBorders a:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 2px;
+  height: 0px;
+  background: #FFF;
+  content: "";
+  opacity: 1;
+  transition: all 0.3s;
 }
 
-div.topLeftBorders a:after
-{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 2px;
-    background: #FFF;
-    content: "";
-    opacity: 1;
-    transition: all 0.3s;
+div.topLeftBorders a:after {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: #FFF;
+  content: "";
+  opacity: 1;
+  transition: all 0.3s;
 }
 
-div.topLeftBorders a:hover:before
-{
-    height: 100%;
+div.topLeftBorders a:hover:before {
+  height: 100%;
 }
 
-div.topLeftBorders a:hover:after
-{
-    opacity: 0;
-    top: 100%;
+div.topLeftBorders a:hover:after {
+  opacity: 0;
+  top: 100%;
 }
+
 /* Circle behind */
-div.circleBehind a:before, div.circleBehind a:after
-{
-    position: absolute;
-    top: 22px;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    border: 4px solid #0277bd;
-    transform: translateX(-50%) translateY(-50%) scale(0.8);
-    border-radius: 50%;
-    background: transparent;
-    content: "";
-    opacity: 0;
-    transition: all 0.3s;
-    z-index: -1;
+div.circleBehind a:before,
+div.circleBehind a:after {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  border: 4px solid #0277bd;
+  transform: translateX(-50%) translateY(-50%) scale(0.8);
+  border-radius: 50%;
+  background: transparent;
+  content: "";
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: -1;
 }
 
-div.circleBehind a:after
-{
-    border-width: 2px;
-    transition: all 0.4s;
+div.circleBehind a:after {
+  border-width: 2px;
+  transition: all 0.4s;
 }
 
-div.circleBehind a:hover:before
-{
-    opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1);
+div.circleBehind a:hover:before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-50%) scale(1);
 }
 
-div.circleBehind a:hover:after
-{
-    opacity: 1;
-    transform: translateX(-50%) translateY(-50%) scale(1.3);
+div.circleBehind a:hover:after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-50%) scale(1.3);
 }
 
 @media (min-width: 800px) {
   #nav-wrapper {
     overflow: hidden;
   }
+
   #nav {
     overflow: hidden;
     flex-direction: row;
   }
+
   .nav-link {
     border-top: none;
   }
+
   .right {
     overflow: hidden;
     flex-direction: row;
@@ -377,37 +431,47 @@ div.circleBehind a:hover:after
     left: 1.5em;
     height: auto;
   }
+
   .btn-nav {
     display: none;
   }
-  .nav a:link.active, a:visited.active, a:active.active {
+
+  .nav a:link.active,
+  a:visited.active,
+  a:active.active {
     background: #f857a8;
     background: -webkit-linear-gradient(45deg, #f857a8, #ff5858);
     background: linear-gradient(45deg, #f857a8, #ff5858);
     color: #fff;
   }
+
   .nav-link-span {
     transform: skew(20deg);
     display: inline-block;
   }
+
   .nav-link {
     transform: skew(-20deg);
     color: #777;
     text-decoration: none;
   }
+
   .nav-link:last-child {
     padding-right: 3em;
   }
+
   a:hover.nav-link:not(.active) {
     color: #444;
     background: #ddd;
     background: linear-gradient(45deg, #fff, #ddd);
   }
 }
+
 @keyframes logo-hover {
   20% {
     padding-right: 0em;
   }
+
   100% {
     padding-right: 5em;
   }
