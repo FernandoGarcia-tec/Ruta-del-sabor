@@ -49,6 +49,19 @@ app.use(session({
 app.use(express.static(path.join(__dirname)));
 app.use('/uploads', express.static('uploads')); // Ruta para acceder a las imágenes subidas
 
+// Ruta para obtener productos
+app.get('/api/products', (req, res) => {
+    const query = 'SELECT * FROM producto'; // Cambia esto al nombre de tu tabla
+
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los productos:', err);
+            return res.status(500).json({ error: 'Error al obtener los productos' });
+        }
+
+        res.json(results);
+    });
+});
 // Rutas
 
 // Página de inicio
