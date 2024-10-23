@@ -1,3 +1,53 @@
+/* ESRTILOS PARA TABLA DE DIRECTORIO */
+.directorio-container {
+  display: flex;
+  padding: 20px;
+}
+
+.directorio-lista {
+  flex: 1;
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.directorio-lista ul {
+  list-style: none;
+  padding: 0;
+}
+
+.directorio-lista ul li {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #e0e0e0;
+  margin-bottom: 10px;
+}
+
+.directorio-lista ul li:hover {
+  background-color: #d0d0d0;
+}
+
+.directorio-detalle {
+  flex: 2;
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.directorio-detalle img {
+  max-width: 100px;
+  margin-bottom: 20px;
+}
+
+.directorio-detalle h3, .directorio-detalle h4 {
+  margin: 10px 0;
+}
+
+.directorio-detalle p {
+  margin: 5px 0;
+}
+
+
+
+/* Estilos para el carrusel de productos */
 .product-carousel-image {
   object-fit: cover; /* Ajusta la imagen para que cubra el área sin deformarse */
   height: 200px; /* Ajusta la altura según tus necesidades */

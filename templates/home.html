@@ -63,6 +63,32 @@
               <span class="sr-only">Next</span>
           </a>
       </div>
+        <!-- TABLA -->
+
+      <div class="directorio-container">
+        <!-- Lista de negocios -->
+        <div class="directorio-lista">
+            <h2>Directorio</h2>
+            <ul id="listaNegocios">
+                <!-- Aquí se añadirán los negocios dinámicamente -->
+            </ul>
+        </div>
+
+        <!-- Detalle del Negocio -->
+        <div class="directorio-detalle" id="detalleNegocio"> 
+          <h4 id="negocioCategoria">Categoría</h4>
+            <h3 id="negocioNombre">Selecciona un negocio</h3>
+           
+            <img id="negocioImagen" src="" alt="Negocio">
+            
+            <p><strong>Descripción:</strong> <span id="negocioDescripcion">Descripción del negocio</span></p>
+            <p><strong>Ubicación:</strong> <span id="negocioUbicacion">Ubicación</span></p>
+            <p><strong>Stock:</strong> <span id="negocioStock">0</span></p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
   </section>
   
   <section id="Turismo" style="color: black; background-color: #888;">
@@ -175,6 +201,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <script src="script/home.js"></script> <!-- Aquí cargarás los productos -->
+  
+  <script src="script/datosCuadro.js"></script> <!-- Aquí cargarás los datos en la tabla -->
 </body>
 <footer>
   <p>Proyecto de especialidad de arquitectura y servicios web avanzados, propiedad de Fernando.     2024-10</p>
