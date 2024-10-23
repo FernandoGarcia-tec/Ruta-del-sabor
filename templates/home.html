@@ -14,12 +14,12 @@
   <header id="nav-wrapper">
     <nav id="nav">
       <div class="nav left">
-        <span class="gradient skew"><h1 class="logo un-skew"><a href="/">La Ruta de Sabor de Comala</a></h1></span>
+        <span class="gradient skew"><h1 class="logo un-skew"><a href="#home">La Ruta de Sabor de Comala</a></h1></span>
         <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
       </div>
       <div class="nav right">
-        <a href="/" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
-        <a href="/salesMenu" class="nav-link"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
+        <a href="#home" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
+        <a href="/sales" class="nav-link"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
         <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav"> Login</span></span></a>
         <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
       </div>
@@ -45,7 +45,7 @@
       <p style="color: black;">Proyecto de especialidad</p>
     </section>
 
-    <section id="Comida" style="color: black; background-color: #aaa;">
+    <section id="Comida" style="color: black; background-color: #aaa; height: 999px;">
       <h2>.</h2>
 <h2>.</h2>
       <h2>RESTAURANTES</h2>
@@ -77,7 +77,7 @@
         <!-- Detalle del Negocio -->
         <div class="directorio-detalle" id="detalleNegocio"> 
           <h4 id="negocioCategoria">Categoría</h4>
-            <h3 id="negocioNombre">Selecciona un negocio</h3>
+            <h3 id="negocioNombre">Selecciona una opción</h3>
            
             <img id="negocioImagen" src="" alt="Negocio">
             
@@ -86,9 +86,33 @@
             <p><strong>Stock:</strong> <span id="negocioStock">0</span></p>
         </div>
     </div>
-    <br>
-    <br>
-    <br>
+    <div class="directorio-container">
+      <!-- Lista de negocios -->
+      <div class="directorio-lista">
+          <div class="tab-container">
+              <ul class="tab-menu">
+                  <li class="tab-item active" id="tabComida">Comida</li>
+                  <li class="tab-item" id="tabNegocios">Negocios</li>
+              </ul>
+          </div>
+          <h2>Directorio</h2>
+          <ul id="listaNegocios">
+              <!-- Aquí se añadirán los negocios dinámicamente -->
+          </ul>
+      </div>
+  
+      <!-- Detalle del Negocio -->
+      <div class="directorio-detalle" id="detalleNegocio"> 
+          <h4 id="negocioCategoria">Categoría</h4>
+          <h3 id="negocioNombre">Selecciona un negocio</h3>
+          <img id="negocioImagen" src="" alt="Negocio">
+          <p><strong>Descripción:</strong> <span id="negocioDescripcion">Descripción del negocio</span></p>
+          <p><strong>Ubicación:</strong> <span id="negocioUbicacion">Ubicación</span></p>
+          <p><strong>Stock:</strong> <span id="negocioStock">0</span></p>
+      </div>
+  </div>
+  
+    
   </section>
   
   <section id="Turismo" style="color: black; background-color: #888;">
@@ -109,6 +133,8 @@
           <span class="sr-only">Next</span>
       </a>
   </div>
+ 
+
 </section>
 
   
@@ -202,6 +228,7 @@
 
   <script src="script/home.js"></script> <!-- Aquí cargarás los productos -->
   
+  <script src="script/datosCuadroComida.js"></script> <!-- Aquí cargarás los datos en la tabla -->
   <script src="script/datosCuadro.js"></script> <!-- Aquí cargarás los datos en la tabla -->
 </body>
 <footer>

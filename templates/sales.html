@@ -2,10 +2,10 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="styles/stylesSales.css"> <!-- Asegúrate de que la ruta sea correcta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/stylesSales.css">  <!-- Asegúrate de que la ruta sea correcta -->
 </head>
 
 <body>
@@ -18,8 +18,8 @@
             <div class="nav right">
                 <a href="/" class="nav-link"><span class="nav-link-span"><span class="u-nav">Home</span></span></a>
                 <a href="/sales" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
-
-                <a href="/login" class="nav-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
+                <a href="/login" class="nav-link"  id="welcome-message" style="display: none;"><span class="nav-link-span"><span id="username"></span></span></a>
+                <a href="/login" class="nav-link"  id="login-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
                 <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
             </div>
         </nav>
@@ -28,60 +28,65 @@
    
     
     <main>
-         <!-- Sección para publicar productos 
-         <section id="publish-product" class="ecommerce-section">
-            <h2>Publicar Nuevo Producto</h2>
-            <form id="product-form">
-                <label for="product-name">Nombre del Producto:</label>
-                <input type="text" id="product-name" name="name" required><br>
-                
-                <label for="product-price">Precio del Producto:</label>
-                <input type="number" id="product-price" name="price" required><br>
+      
+            <h1>.</h1>
+            <h2>.</h2>
+        <button id="openModalBtn">Registrar Negocio</button>
 
-                <label for="product-image">URL de la Imagen:</label>
-                <input type="text" id="product-image" name="image" required><br>
+        <div id="productModal" class="modal">
+            <div class="modal-content">
+            <span class="closeBtn">&times;</span>
+            <h2>Publicar Negocio</h2>
+            <form id="productForm" action="/upload-negocio" method="POST" enctype="multipart/form-data">
+                <label for="productName">Nombre del Negocio:</label>
+                <input type="text" id="productName" name="productName" required>
+                <label for="productEmail">Email del Proveedor:</label>
+                <input type="email" id="productEmail" name="productEmail" readonly>
+
+                <label for="productCategory">Categoría:</label>
+                <select id="productCategory" name="productCategory" required>
+                    <option value="Turismo">Turismo</option>
+                    <option value="Comida">Comida</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Hospedaje">Hospedaje</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Comercio">Comercio</option>
+                    <option value="Otros">Otros</option>
+               
+                </select>
                 
-                <button type="submit">Publicar Producto</button>
+                <label for="productDescription">Descripción:</label>
+                <textarea id="productDescription" name="productDescription" required></textarea>
+                
+                <label for="productImage">Imagen:</label>
+                <input type="file" id="productImage" name="productImage" accept="image/*" required>
+                
+                <label for="productLocation">Ubicación:</label>
+                <input type="text" id="productLocation" name="productLocation" required>
+                <label for="productHorarioabierto">Horario de abrir:</label>
+                <input type="time" id="productHorarioabierto" name="productHorarioabierto" required>
+                <label for="productHorarioCerrado">Horario de Cerrado:</label>
+                <input type="time" id="productHorarioCerrado" name="productHorarioCerrado" required>
+                <button type="submit">Publicar</button>
             </form>
-        </section>-->
-        <!-- Sección de productos destacados -->
-        <section id="featured-products" class="ecommerce-section">
-            <h2>Ofertas Destacadas</h2>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="styles\background.webp" alt="Producto 1">
-                    <h3>Producto 1</h3>
-                    <p>$29.99</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </div>
-                <div class="product-card">
-                    <img src="styles\background.webp" alt="Producto 2">
-                    <h3>Producto 2</h3>
-                    <p>$49.99</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </div>
-                <div class="product-card">
-                    <img src="styles\background.webp" alt="Producto 3">
-                    <h3>Producto 3</h3>
-                    <p>$19.99</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
-                </div>
+       
             </div>
-        </section>
-
+        </div>
+  
         <!-- Catálogo de productos -->
         <section id="product-catalog" class="ecommerce-section">
             <h2>Catálogo de Productos</h2>
             <div class="products-grid">
                 <div class="product-card">
                     <img src="styles\background.webp" alt="Producto 3">
-                    <h3>Producto 4</h3>
+                    <h3 ><span id="titulo"></span></h3>
+                    
                     <p>$39.99</p>
                     <button class="add-to-cart">Agregar al carrito</button>
                 </div>
-                <div class="product-card">
+                <div class="product-card" id="showmen" style="display: none;">
                     <img src="styles\background.webp" alt="Producto 3">
-                    <h3>Producto 5</h3>
+                    <h3><span id="titulo2"></span></h3>
                     <p>$59.99</p>
                     <button class="add-to-cart">Agregar al carrito</button>
                 </div>
@@ -94,18 +99,13 @@
             </div>
         </section>
 
-        <!-- Sección de carrito de compras -->
-        <section id="shopping-cart" class="ecommerce-section">
-            <h2>Tu Carrito</h2>
-            <div class="cart-items">
-                <p>No hay artículos en el carrito.</p>
-            </div>
-            <button class="checkout-btn">Proceder al Pago</button>
-        </section>
     </main>
      <!-- Importa el script externo -->
-     <script type="module" src="script\salesScript.js"></script>
+     <script src="script\autentNeg.js"></script>
+     <script src="script\modal.js">
+    </script>
     
+    <script src="script\modalNegocio.js"></script>
     <footer>
         <p>Proyecto de especialidad de arquitectura y servicios web avanzados</p>
     </footer>

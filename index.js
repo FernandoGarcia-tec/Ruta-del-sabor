@@ -62,6 +62,19 @@ app.get('/api/products', (req, res) => {
         res.json(results);
     });
 });
+// Ruta para obtener negocios
+app.get('/api/negocios', (req, res) => {
+    const query = 'SELECT * FROM negocio'; // Cambia esto al nombre de tu tabla
+
+    connection.query(query, (err, results) => {
+        if (err) {
+            console.error('Error al obtener los negocios:', err);
+            return res.status(500).json({ error: 'Error al obtener los negocios' });
+        }
+
+        res.json(results);
+    });
+});
 // Rutas
 
 // Página de inicio
@@ -76,7 +89,7 @@ app.get('/sales', (req, res) => {
 
 // Procesar formulario de publicación de producto
 app.post('/upload-product', upload.single('productImage'), (req, res) => {
-    const { productName, productDescription, productPrice, productEmail, productCategory, productStock, productLocation } = req.body;
+    const { productName, productDescription, productPrice, productEmail, productCategory, productStock, productLocation } = req.body;// Datos del formulario
     const productImage = req.file ? '/uploads/' + req.file.filename : null; // Ruta de la imagen subida
 
     // Consulta SQL para insertar el producto en la base de datos
@@ -101,6 +114,34 @@ app.post('/upload-product', upload.single('productImage'), (req, res) => {
         res.send('Producto publicado exitosamente! <a href="/sales">Volver a ventas</a>');
     });
 });
+//formulario de publicación de negocio
+app.post('/upload-negocio', upload.single('productImage'), (req, res) => {
+    const { productName, productDescription, productEmail, productCategory, productLocation,productHorarioabierto,productHorarioCerrado } = req.body;// Datos del formulario
+    const productImage = req.file ? '/uploads/' + req.file.filename : null; // Ruta de la imagen subida
+
+    // Consulta SQL para insertar el producto en la base de datos
+    const query = `
+        INSERT INTO negocio (nombre, descripcion, ubicacion, categoria, imagen, horario, horario_cerrado) 
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+    `;
+   
+    connection.query(query, [
+        productName, 
+        productDescription,
+        productLocation, 
+        productEmail, 
+        productImage, 
+        productHorarioabierto,
+        productHorarioCerrado
+    ], (err, results) => {
+        if (err) {
+            console.error('Error al insertar negocio:', err);
+            return res.status(500).send('Error al publicar negocio');
+        }
+        res.send('negocio publicado exitosamente! <a href="/sales">Volver a ventas</a>');
+    });
+}
+);
 
 // Página de Login
 app.get('/login', (req, res) => {
@@ -154,7 +195,26 @@ app.get('/is-authenticated', (req, res) => {
         res.json({ authenticated: false });
     }
 });
+// Ruta para verificar si el usuario está autenticado
+app.get('/is-authenticated2', (req, res) => {
+    if (req.session.loggedIn) {
+        const query = 'SELECT email FROM users WHERE username = ?';
+        connection.query(query, [req.session.username], (err, results) => {
+            if (err) {
+                console.error('Error al obtener el email:', err);
+                return res.status(500).json({ error: 'Error al obtener el email' });
+            }
 
+            if (results.length > 0) {
+                res.json({ authenticated: true, username: req.session.username, email: results[0].email });
+            } else {
+                res.json({ authenticated: true, username: req.session.username, email: null });
+            }
+        });
+    } else {
+        res.json({ authenticated: false });
+    }
+});
 
 // Página de registro
 app.get('/register', (req, res) => {
