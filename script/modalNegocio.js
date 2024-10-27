@@ -25,17 +25,20 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("titulo").textContent = nombre;
             
             document.getElementById("titulo2").textContent = negocioId2.nombre;
+            
             console.log('Nombre del negocio:', nombre);
             console.log('Nombre del negocio:', nombre2);
             const welcomeMessage = document.getElementById("welcome-message");
             const showmen = document.getElementById("showmen");
+            const modalAñadir = document.getElementById("openModalBtn");
             if (data.length > 1) {
                
                 showmen.style.display = "block";
+                modalAñadir.style.display = "none";
 
 
             }
-
+            
 
         })
         .catch(error => console.error('Error:', error));

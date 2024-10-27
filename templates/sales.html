@@ -31,7 +31,9 @@
       
             <h1>.</h1>
             <h2>.</h2>
-        <button id="openModalBtn">Registrar Negocio</button>
+            <!-- Scrollable modal -->
+
+        <button id="openModalBtn" >Agregar</button>
 
         <div id="productModal" class="modal">
             <div class="modal-content">
@@ -75,26 +77,24 @@
   
         <!-- Catálogo de productos -->
         <section id="product-catalog" class="ecommerce-section">
-            <h2>Catálogo de Productos</h2>
+            <h2>Mis negocios</h2>
             <div class="products-grid">
-                <div class="product-card">
+                <div class="product-card" style="height: 40%; width: 30%;">
                     <img src="styles\background.webp" alt="Producto 3">
                     <h3 ><span id="titulo"></span></h3>
                     
-                    <p>$39.99</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                    
+                    <button onclick="redirectToProducts('titulo')">Dirigir a mis productos</button>
+
+
                 </div>
-                <div class="product-card" id="showmen" style="display: none;">
+                <div class="product-card" id="showmen" style="display: none; height: 40%; width: 30%;">
                     <img src="styles\background.webp" alt="Producto 3">
                     <h3><span id="titulo2"></span></h3>
-                    <p>$59.99</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+                  
+                    <button onclick="redirectToProducts('titulo2')">Dirigir a mis productos</button>
                 </div>
-                <div class="product-card">
-                    <img src="styles\background.webp" alt="Producto 3">
-                    <h3>Producto 6</h3>
-                    <p>$24.99</p>
-                    <button class="add-to-cart">Agregar al carrito</button>
+               
                 </div>
             </div>
         </section>
@@ -102,9 +102,8 @@
     </main>
      <!-- Importa el script externo -->
      <script src="script\autentNeg.js"></script>
-     <script src="script\modal.js">
-    </script>
-    
+     <script src="script\modal.js"></script>
+    <script src="script\IdNegocio.js"></script>
     <script src="script\modalNegocio.js"></script>
     <footer>
         <p>Proyecto de especialidad de arquitectura y servicios web avanzados</p>

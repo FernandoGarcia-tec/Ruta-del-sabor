@@ -62,6 +62,22 @@ app.get('/api/products', (req, res) => {
         res.json(results);
     });
 });
+//traer productos solo con el nombre del negocio
+
+app.get('/api/productosN', async (req, res) => {
+    const nombreNegocio = req.query.nombreNegocio;
+    const query = 'SELECT * FROM producto WHERE nombrenegocio = ?';
+    connection.query(query, [nombreNegocio], (err, results) => {
+        if (err) {
+            console.error('Error al obtener los productos:', err);
+            return res.status(500).json({ error: 'Error al obtener los productos' });
+        }
+
+        res.json(results);
+    }
+    );
+});
+
 // Ruta para obtener negocios
 app.get('/api/negocios', (req, res) => {
     const query = 'SELECT * FROM negocio'; // Cambia esto al nombre de tu tabla
@@ -89,16 +105,17 @@ app.get('/sales', (req, res) => {
 
 // Procesar formulario de publicación de producto
 app.post('/upload-product', upload.single('productImage'), (req, res) => {
-    const { productName, productDescription, productPrice, productEmail, productCategory, productStock, productLocation } = req.body;// Datos del formulario
+    const { productName, productDescription, productPrice, nombrenegocio,productEmail, productCategory, productStock, productLocation } = req.body;// Datos del formulario
     const productImage = req.file ? '/uploads/' + req.file.filename : null; // Ruta de la imagen subida
 
     // Consulta SQL para insertar el producto en la base de datos
     const query = `
-        INSERT INTO producto (nombre, email, categoria, stock, precio, descripcion, imagen, ubicacion) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO producto (nombre,nombrenegocio, email, categoria, stock, precio, descripcion, imagen, ubicacion) 
+        VALUES (?, ?,?, ?, ?, ?, ?, ?, ?)
     `;
     connection.query(query, [
         productName, 
+        nombrenegocio,
         productEmail, 
         productCategory, 
         productStock, 

@@ -20,7 +20,7 @@
                 <a href="/sales" class="nav-link active"><span class="nav-link-span"><span class="u-nav">Ventas</span></span></a>
                 <a href="/login" class="nav-link"  id="welcome-message" style="display: none;"><span class="nav-link-span"><span id="username"></span></span></a>
                 <a href="/login" class="nav-link"  id="login-link"><span class="nav-link-span"><span class="u-nav">Login</span></span></a>
-                <a href="#contact" class="nav-link"><span class="nav-link-span"><span class="u-nav">About</span></span></a>
+                <a href="/logout" class="nav-link"><span class="nav-link-span"><span class="u-nav">Cerrar sesion</span></span></a>
             </div>
         </nav>
     </header>
@@ -30,60 +30,68 @@
     <main>
         <h2>.</h2>
         <h2>.</h2>
-        <div id="showmen" style="display: none;">
-            Bienvenido, <span id="username2"></span>!
-          </div>
-        <button id="openModalBtn">Publicar Producto</button>
+        <button id="openModalBtn" class="modalStilo">Agregar</button>
 
         <div id="productModal" class="modal">
             <div class="modal-content">
             <span class="closeBtn">&times;</span>
+            
             <h2>Publicar Producto</h2>
             <form id="productForm" action="/upload-product" method="POST" enctype="multipart/form-data">
-                <label for="productName">Nombre del Producto:</label>
-                <input type="text" id="productName" name="productName" required>
-                <label for="productNegocio">Email del Proveedor:</label>
-                <input type="email" id="productNegocio" name="productNegocio" readonly>
-                <label for="productEmail">Email del Proveedor:</label>
-                <input type="email" id="productEmail" name="productEmail" readonly>
-                
-                <label for="productCategory">Categoría:</label>
-                <select id="productCategory" name="productCategory" required>
-                    <option value="Turismo">Turismo</option>
-                    <option value="Comida">Comida</option>
-                    <option value="Entretenimiento">Entretenimiento</option>
-                    <option value="Hospedaje">Hospedaje</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Comercio">Comercio</option>
-                    <option value="Otros">Otros</option>
-               
-                </select>
-                
-                <label for="productStock">Cantidad en Inventario:</label>
-                <input type="number" id="productStock" name="productStock" min="0" required>
-                
-                <label for="productPrice">Precio:</label>
-                <input type="number" id="productPrice" name="productPrice" step="0.01" required>
-                
-                <label for="productDescription">Descripción:</label>
-                <textarea id="productDescription" name="productDescription" required></textarea>
-                
-                <label for="productImage">Imagen:</label>
-                <input type="file" id="productImage" name="productImage" accept="image/*" required>
-                
-                <label for="productLocation">Ubicación:</label>
-                <input type="text" id="productLocation" name="productLocation" required>
-                
-                <button type="submit">Publicar</button>
-            </form>
+            <label for="productName">Nombre del Producto:</label>
+            <input type="text" id="productName" name="productName" required>
+            <label for="nombrenegocio">Nombre de negocio:</label>
+            <input type="email" id="nombrenegocio" name="nombrenegocio" readonly>
+            <label for="productEmail">Usuario:</label>
+            <input type="email" id="productEmail" name="productEmail" readonly>
             
+            <label for="productCategory">Categoría:</label>
+            <select id="productCategory" name="productCategory" required>
+            <option value="Turismo">Turismo</option>
+            <option value="Comida">Comida</option>
+            <option value="Entretenimiento">Entretenimiento</option>
+            <option value="Hospedaje">Hospedaje</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Comercio">Comercio</option>
+            <option value="Otros">Otros</option>
+            </select>
+            
+            <label for="productStock">Cantidad en Inventario:</label>
+            <input type="number" id="productStock" name="productStock" min="0" required>
+            
+            <label for="productPrice">Precio:</label>
+            <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+            
+            <label for="productDescription">Descripción:</label>
+            <textarea id="productDescription" name="productDescription" required></textarea>
+            
+            <label for="productImage">Imagen:</label>
+            <input type="file" id="productImage" name="productImage" accept="image/*" required>
+            
+            <label for="productLocation">Ubicación:</label>
+            <input type="text" id="productLocation" name="productLocation" required>
+            
+            <button type="submit">Publicar</button>
+            </form>
             </div>
         </div>
+        
+    
+<h2 id="showmen">Mis Productos</h2>
+        <section id="product-catalog" class="ecommerce-section" style="height: 20%; width: 30%;">
+           
+            
+            <!-- Aquí se mostrarán los productos filtrados -->
+       
+       
+        </section>
+        
 
     </main>
      <!-- Enlazar el archivo JavaScript -->
      <script src="script\autent.js"></script>
-    
+     <script src="script\ModalNegocioD.js">
+    </script>
      <script src="script\modal.js">
 </script>
     <footer>
