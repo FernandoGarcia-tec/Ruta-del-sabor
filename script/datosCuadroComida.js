@@ -1,65 +1,82 @@
 document.addEventListener("DOMContentLoaded", function () {
-    let productosComida = [];
-    let negocios = [];
+    // Tab switching functionality
+    document.getElementById('tabProductos').addEventListener('click', function () {
+        toggleSection('productos');
+    });
+    document.getElementById('tabNegocios').addEventListener('click', function () {
+        toggleSection('negocios');
+    });
 
-    // Llamar a la API para obtener productos y negocios
+    // Fetch and display products
     fetch('/api/products')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Error al cargar productos');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-            // Filtrar solo los productos de la categoría 'Comida' y 'Negocios'
-            productosComida = data.filter(product => product.categoria === 'Comida');
-            negocios = data.filter(product => product.categoria === 'Negocios');
-
-            // Mostrar lista de comida por defecto
-            mostrarLista('listaNegocios', productosComida, true);
+            const listaProductos = document.getElementById('listaProductos');
+            data.forEach((product) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = product.nombre;
+                listItem.onclick = () => mostrarDetalleProducto(product);
+                listaProductos.appendChild(listItem);
+            });
         })
         .catch(error => console.error('Error al cargar productos:', error));
 
-    // Función para mostrar lista de productos o negocios
-    function mostrarLista(listaId, datos, esProducto) {
-        const listaNegocios = document.getElementById(listaId);
-        listaNegocios.innerHTML = ''; // Limpiar contenido previo
-
-        datos.forEach(item => {
-            const listItem = document.createElement('li');
-            listItem.textContent = item.nombre;
-            listItem.addEventListener('click', () => mostrarDetalle(item, esProducto));
-            listaNegocios.appendChild(listItem);
-        });
-    }
-
-    // Función para mostrar detalle del negocio o producto
-    function mostrarDetalle(item, esProducto) {
-        document.getElementById('negocioCategoria').textContent = esProducto ? 'Comida' : 'Negocios';
-        document.getElementById('negocioNombre').textContent = item.nombre;
-        document.getElementById('negocioImagen').src = item.imagen || 'placeholder.png'; // Usa una imagen por defecto si no hay
-        document.getElementById('negocioDescripcion').textContent = item.descripcion;
-        document.getElementById('negocioUbicacion').textContent = item.ubicacion || 'N/A';
-        document.getElementById('negocioStock').textContent = esProducto ? item.stock : 'N/A';
-    }
-
-    // Eventos para controlar las pestañas
-    document.getElementById('tabComida').addEventListener('click', function () {
-        cambiarTab('tabComida', 'Comida');
-        mostrarLista('listaNegocios', productosComida, true); // Mostrar productos de comida
-    });
-
-    document.getElementById('tabNegocios').addEventListener('click', function () {
-        cambiarTab('tabNegocios', 'Negocios');
-        mostrarLista('listaNegocios', negocios, false); // Mostrar negocios
-    });
-
-    // Función para cambiar de pestaña
-    function cambiarTab(tabId, categoria) {
-        const tabs = document.querySelectorAll('.tab-item');
-        tabs.forEach(tab => tab.classList.remove('active'));
-
-        document.getElementById(tabId).classList.add('active');
-        document.getElementById('negocioCategoria').textContent = categoria;
-    }
+    // Fetch and display businesses (negocios)
+    fetch('/api/negocios')
+        .then(response => response.json())
+        .then(data => {
+            const listaNegocios = document.getElementById('listaNegocios');
+            data.forEach((negocio) => {
+                const listItem = document.createElement('li');
+                listItem.textContent = negocio.nombre;
+                listItem.onclick = () => mostrarDetalleNegocio(negocio);
+                listaNegocios.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error al cargar negocios:', error));
 });
+
+// Toggle between Productos and Negocios sections
+function toggleSection(section) {
+    const productosSection = document.getElementById('productosSection');
+    const detalleProducto = document.getElementById('detalleProducto');
+    const negociosSection = document.getElementById('negociosSection');
+    const detalleNegocio = document.getElementById('detalleNegocio');
+
+    if (section === 'productos') {
+        productosSection.style.display = 'block';
+        detalleProducto.style.display = 'block';
+        negociosSection.style.display = 'none';
+        detalleNegocio.style.display = 'none';
+        document.getElementById('tabProductos').classList.add('active');
+        document.getElementById('tabNegocios').classList.remove('active');
+    } else {
+        productosSection.style.display = 'none';
+        detalleProducto.style.display = 'none';
+        negociosSection.style.display = 'block';
+        detalleNegocio.style.display = 'block';
+        document.getElementById('tabNegocios').classList.add('active');
+        document.getElementById('tabProductos').classList.remove('active');
+    }
+}
+
+// Display product details
+function mostrarDetalleProducto(product) {
+    document.getElementById('productoImagen').src = product.imagen;
+    document.getElementById('productoNombre').textContent = product.nombre;
+    document.getElementById('productoCategoria').textContent = product.categoria;
+    document.getElementById('productoDescripcion').textContent = product.descripcion;
+    document.getElementById('productoUbicacion').textContent = product.ubicacion;
+    document.getElementById('productoStock').textContent = product.stock;
+}
+
+// Display business (negocio) details
+function mostrarDetalleNegocio(negocio) {
+  
+    document.getElementById('negocioImagen').src = negocio.imagen;
+    document.getElementById('negocioNombre').textContent = negocio.nombre;
+    document.getElementById('negocioCategoria').textContent = negocio.categoria;
+    document.getElementById('negocioDescripcion').textContent = negocio.descripcion;
+    document.getElementById('negocioUbicacion').textContent = negocio.ubicacion;
+    // Hide product details when showing business details
+}

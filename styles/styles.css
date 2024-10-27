@@ -595,3 +595,68 @@ div.circleBehind a:hover:after {
 }
 
 /*# sourceMappingURL=styles.css.map */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.tab-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+  background-color: #f0f0f0;
+  padding: 10px 0;
+}
+
+.tab-menu {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.tab-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #333;
+}
+
+.tab-item.active {
+  color: black;
+  border-bottom: 2px solid black;
+}
+
+.directorio-container {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.directorio-lista, .directorio-detalle {
+  width: 45%;
+  background-color: #f8f8f8;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.directorio-lista ul li {
+  background-color: #e0e0e0;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.directorio-lista ul li:hover {
+  background-color: #d0d0d0;
+}
+
+.directorio-detalle img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 5px;
+}

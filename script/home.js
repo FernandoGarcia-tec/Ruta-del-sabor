@@ -47,10 +47,10 @@ function loadProductsInCarousel(carouselId, products) {
                 <img src="${product.imagen}" class="d-block product-carousel-image" alt="${product.nombre}">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>${product.nombre}</h5>
-                    <p>Stock: ${product.stock}</p>
-                    <p>${product.descripcion}</p>
+                    <p>Descripcion: ${product.descripcion}</p>
+                    <p>Negocio: ${product.nombrenegocio}</p>
                     
-                    <p>${product.ubicacion}</p>
+                    <p>Ubicacion: ${product.ubicacion}</p>
                 </div>
             </div>
         `;

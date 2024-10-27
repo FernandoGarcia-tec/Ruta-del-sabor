@@ -45,8 +45,8 @@
                 <label for="productEmail">Email del Proveedor:</label>
                 <input type="email" id="productEmail" name="productEmail" readonly>
 
-                <label for="productCategory">Categoría:</label>
-                <select id="productCategory" name="productCategory" required>
+                <label for="productCategory" style="display: none;">Categoría:</label>
+                <select id="productCategory" style="display: none;"name="productCategory" required>
                     <option value="Turismo">Turismo</option>
                     <option value="Comida">Comida</option>
                     <option value="Entretenimiento">Entretenimiento</option>
@@ -80,8 +80,9 @@
             <h2>Mis negocios</h2>
             <h1 id="Mensaje">No se ha registrado ningun negocio...</h1>
             <div class="products-grid" id="cardNegocios" >
-                <div class="product-card" style="height: 40%; width: 30%;">
-                    <img src="styles\background.webp" alt="Producto 3">
+                <div class="products-grid">                
+                    <div class="product-card"style="height: 40%; width: 30%;">
+                        <img id="img2" src="" alt="Producto 3" style="height: 100%;">
                     <h3 ><span id="titulo"></span></h3>
                     
                     
@@ -90,7 +91,7 @@
 
                 </div>
                 <div class="product-card" id="showmen" style="display: none; height: 40%; width: 30%;">
-                    <img src="styles\background.webp" alt="Producto 3">
+                    <img id="img3" src="" alt="Producto 3" style="height: 100%;">
                     <h3><span id="titulo2"></span></h3>
                   
                     <button onclick="redirectToProducts('titulo2')">Dirigir a mis productos</button>
@@ -98,7 +99,8 @@
                
                 </div>
             </div>
-            
+        </div>
+
             <h1 id="MensajeLimite">Limite de negocios alcanzados...</h1>
         </section>
 

@@ -14,25 +14,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 Mensaje.style.display = 'block'; // Show the message if there are no businesses
                 MensajeLimite.style.display = 'none'; // Hide the message if there are no businesses
                 return;
+            }else{
+                Mensaje.style.display = 'none';
+                MensajeLimite.style.display = 'none';
             }
             
             const nombre = data[0].nombre;
+            const imagenNegocio = data[0].imagen;
             data.forEach((negocio, index) => {
                 console.log(`Negocio ${index + 1}:`, negocio);
+                // Create image element for each business
+                if (index === 0) {
+                    document.getElementById("img2").src = negocio.imagen;
+                    console.log('Imagen del negocio fut:', negocio.imagen, index);
+                    document.getElementById("titulo").textContent = negocio.nombre;
+                    console.log('Nombre del negocio:', negocio.nombre);
+                } else {
+                    console.log('Imagen del negocio fat:', negocio.imagen, index);
+                    document.getElementById("img3").src = negocio.imagen;
+                    document.getElementById("titulo2").textContent = negocio.nombre;
+                    console.log('Nombre del negocio 2:', negocio.nombre);
+
+                    
+                    
+                }
+               
             });
-            const negocioId2 = data.find(negocio => negocio.id === 2);
-            if (negocioId2) {
-                console.log('Nombre del negocio con id 2:', negocioId2.nombre);
-            } else {
-                console.error('No se encontró un negocio con id 2');
-            }
-            const nombre2 = data[1].nombre2;
-            document.getElementById("titulo").textContent = nombre;
             
-            document.getElementById("titulo2").textContent = negocioId2.nombre;
-            
-            console.log('Nombre del negocio:', nombre);
-            console.log('Nombre del negocio:', nombre2);
             const welcomeMessage = document.getElementById("welcome-message");
             const showmen = document.getElementById("showmen");
             const modalAñadir = document.getElementById("openModalBtn");
@@ -42,12 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 modalAñadir.style.display = "none";
                 Mensaje.style.display = 'none';
                 MensajeLimite.style.display = 'block';
-
-
             }
-            
-
         })
         .catch(error => console.error('Error:', error));
 });
-

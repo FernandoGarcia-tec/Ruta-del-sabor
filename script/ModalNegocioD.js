@@ -1,7 +1,8 @@
 // Captura el parámetro de la URL
 const urlParams = new URLSearchParams(window.location.search);
 const nombreNegocio = urlParams.get('nombreNegocio');
-
+const productCategory = urlParams.get('productCategory');
+console.log(productCategory);
 // Completar el campo de negocio en el modal
 document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("nombrenegocio").value = nombreNegocio || 'Nombre no especificado';

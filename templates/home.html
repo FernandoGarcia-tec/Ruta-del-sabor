@@ -64,55 +64,66 @@
           </a>
       </div>
         <!-- TABLA -->
-
-      <div class="directorio-container">
-        <!-- Lista de negocios -->
-        <div class="directorio-lista">
-            <h2>Directorio</h2>
-            <ul id="listaNegocios">
-                <!-- Aquí se añadirán los negocios dinámicamente -->
-            </ul>
-        </div>
-
-        <!-- Detalle del Negocio -->
-        <div class="directorio-detalle" id="detalleNegocio"> 
-          <h4 id="negocioCategoria">Categoría</h4>
-            <h3 id="negocioNombre">Selecciona una opción</h3>
-           
-            <img id="negocioImagen" src="" alt="Negocio">
-            
-            <p><strong>Descripción:</strong> <span id="negocioDescripcion">Descripción del negocio</span></p>
-            <p><strong>Ubicación:</strong> <span id="negocioUbicacion">Ubicación</span></p>
-            <p><strong>Stock:</strong> <span id="negocioStock">0</span></p>
-        </div>
-    </div>
-    <div class="directorio-container">
-      <!-- Lista de negocios -->
-      <div class="directorio-lista">
-          <div class="tab-container">
-              <ul class="tab-menu">
-                  <li class="tab-item active" id="tabComida">Comida</li>
-                  <li class="tab-item" id="tabNegocios">Negocios</li>
-              </ul>
-          </div>
-          <h2>Directorio</h2>
-          <ul id="listaNegocios">
-              <!-- Aquí se añadirán los negocios dinámicamente -->
+        <br>
+        <div class="main-container">
+          <div class="tab-container"style="position: absolute; ">
+               <ul class="tab-menu" style="padding-top: 1px;" >
+              <li class="tab-item active" id="tabProductos">Productos</li>
+              <li class="tab-item" id="tabNegocios">Negocios</li>
           </ul>
-      </div>
-  
-      <!-- Detalle del Negocio -->
-      <div class="directorio-detalle" id="detalleNegocio"> 
-          <h4 id="negocioCategoria">Categoría</h4>
-          <h3 id="negocioNombre">Selecciona un negocio</h3>
-          <img id="negocioImagen" src="" alt="Negocio">
-          <p><strong>Descripción:</strong> <span id="negocioDescripcion">Descripción del negocio</span></p>
-          <p><strong>Ubicación:</strong> <span id="negocioUbicacion">Ubicación</span></p>
-          <p><strong>Stock:</strong> <span id="negocioStock">0</span></p>
-      </div>
-  </div>
-  
-    
+          </div>
+      
+            <!-- Content Section -->
+            <div class="directorio-container" style="margin-top: 20px;">
+            
+              <!-- Productos Section -->
+              <div class="directorio-lista" id="productosSection">
+                
+                <h2></h2>
+                
+                <h2></h2>
+                <h2>Directorio de Productos</h2>
+                <ul id="listaProductos">
+                  <!-- Product list items will be dynamically added here -->
+                </ul>
+              </div>
+              <div class="directorio-detalle" id="detalleProducto">
+                
+                <h2></h2>
+                
+                <h2></h2>
+                <h4 id="productoCategoria">Categoría</h4>
+                <h3 id="productoNombre">Selecciona un producto</h3>
+                <img id="productoImagen" src="" alt="Producto">
+                <p><strong>Descripción:</strong> <span id="productoDescripcion">Descripción del producto</span></p>
+                <p><strong>Ubicación:</strong> <span id="productoUbicacion">Ubicación</span></p>
+                <p><strong>Stock:</strong> <span id="productoStock">0</span></p>
+              </div>
+          
+              <!-- Negocios Section -->
+              <div class="directorio-lista" id="negociosSection" style="display: none;">
+                
+                <h2></h2>
+                
+                <h2></h2>
+                <h2>Directorio de Negocios</h2>
+                <ul id="listaNegocios">
+                  <!-- Business list items will be dynamically added here -->
+                </ul>
+              </div>
+              <div class="directorio-detalle" id="detalleNegocio" style="display: none;">
+                
+                <h2></h2>
+                
+                <h2></h2>
+                <h4 id="negocioCategoria">Categoría</h4>
+                <h3 id="negocioNombre">Selecciona un negocio</h3>
+                <img id="negocioImagen" src="" alt="Negocio">
+                <p><strong>Descripción:</strong> <span id="negocioDescripcion">Descripción del negocio</span></p>
+                <p><strong>Ubicación:</strong> <span id="negocioUbicacion">Ubicación</span></p>
+              </div>
+            </div>
+          </div>
   </section>
   
   <section id="Turismo" style="color: black; background-color: #888;">
@@ -229,7 +240,6 @@
   <script src="script/home.js"></script> <!-- Aquí cargarás los productos -->
   
   <script src="script/datosCuadroComida.js"></script> <!-- Aquí cargarás los datos en la tabla -->
-  <script src="script/datosCuadro.js"></script> <!-- Aquí cargarás los datos en la tabla -->
 </body>
 <footer>
   <p>Proyecto de especialidad de arquitectura y servicios web avanzados, propiedad de Fernando.     2024-10</p>
