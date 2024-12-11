@@ -19,6 +19,7 @@ async function cargarProductos() {
         catalogo.innerHTML = '';
         console.log(nombreNegocio);
         productos.forEach(producto => {
+           
             const productCard = document.createElement('div');
             productCard.className = 'product-card';
             productCard.innerHTML = `
@@ -27,6 +28,9 @@ async function cargarProductos() {
                 <p>Precio: $${producto.precio}</p>
                 <p>Descripción: ${producto.descripcion}</p>
                 <p>Ubicacion: ${producto.ubicacion}</p>
+                <span id="productoId">${producto.id}</span>
+                <button class="delete-button" onclick="eliminarProducto()">Eliminar</button>
+                    
             `;
             catalogo.appendChild(productCard);
             

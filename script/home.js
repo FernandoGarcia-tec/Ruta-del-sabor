@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     // Llamar a la API para obtener productos
     fetch('/api/products')
         .then(response => {
@@ -42,15 +42,20 @@ function loadProductsInCarousel(carouselId, products) {
 
     products.forEach((product, index) => {
         const activeClass = index === 0 ? 'active' : ''; // Hacer el primer elemento activo
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(product.ubicacion)}`;
+
         const carouselItem = `
             <div class="carousel-item ${activeClass}">
                 <img src="${product.imagen}" class="d-block product-carousel-image" alt="${product.nombre}">
                 <div class="carousel-caption d-none d-md-block">
                     <h5>${product.nombre}</h5>
-                    <p>Descripcion: ${product.descripcion}</p>
+                    <p>Descripción: ${product.descripcion}</p>
                     <p>Negocio: ${product.nombrenegocio}</p>
-                    
-                    <p>Ubicacion: ${product.ubicacion}</p>
+                    <p>
+                        <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" style="color: #007bff; text-decoration: underline;">
+                            Ver ubicación en Google Maps
+                        </a>
+                    </p>
                 </div>
             </div>
         `;

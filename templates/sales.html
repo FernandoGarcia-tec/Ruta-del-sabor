@@ -85,9 +85,11 @@
                         <img id="img2" src="" alt="Producto 3" style="height: 100%;">
                     <h3 ><span id="titulo"></span></h3>
                     
+
                     
                     <button onclick="redirectToProducts('titulo')">Dirigir a mis productos</button>
-
+<span id="negocioId" style="display: none;">1</span> <!-- Ejemplo de ID de negocio -->
+<button onclick="eliminarNegocio()">Eliminar Negocio</button>
 
                 </div>
                 <div class="product-card" id="showmen" style="display: none; height: 40%; width: 30%;">
@@ -95,6 +97,8 @@
                     <h3><span id="titulo2"></span></h3>
                   
                     <button onclick="redirectToProducts('titulo2')">Dirigir a mis productos</button>
+                    <span id="negocioId" style="display: none;">1</span> <!-- Ejemplo de ID de negocio -->
+<button onclick="eliminarNegocio()">Eliminar Negocio</button>
                 </div>
                
                 </div>
@@ -103,6 +107,15 @@
 
             <h1 id="MensajeLimite">Limite de negocios alcanzados...</h1>
         </section>
+            <!-- Campo oculto para almacenar el username del usuario logueado -->
+    <input type="hidden" id="username" value="usuario_logeado">
+
+    <!-- Contenedor para los negocios -->
+    <div id="negociosContainer">
+        <h2>Negocios filtrados por categoría</h2>
+        <ul id="listaNegocios"></ul>
+        <p id="noNegocios" style="display: none;">No se encontraron negocios para esta categoría.</p>
+    </div>
 
     </main>
      <!-- Importa el script externo -->
@@ -110,6 +123,7 @@
      <script src="script\modal.js"></script>
     <script src="script\IdNegocio.js"></script>
     <script src="script\modalNegocio.js"></script>
+    <script src="script\delete.js"></script>
     <footer>
         <p>Proyecto de especialidad de arquitectura y servicios web avanzados</p>
     </footer>

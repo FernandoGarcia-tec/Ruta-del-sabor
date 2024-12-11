@@ -66,17 +66,35 @@ function mostrarDetalleProducto(product) {
     document.getElementById('productoNombre').textContent = product.nombre;
     document.getElementById('productoCategoria').textContent = product.categoria;
     document.getElementById('productoDescripcion').textContent = product.descripcion;
-    document.getElementById('productoUbicacion').textContent = product.ubicacion;
     document.getElementById('productoStock').textContent = product.stock;
+
+    // Generate Google Maps iframe
+    const mapsIframe = `<iframe 
+        width="100%" 
+        height="200" 
+        frameborder="0" 
+        style="border:0; margin-top: 10px;" 
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCDBBWwWfZSxUWUVasaKXWh9s5G8F3kZnA&q=${encodeURIComponent(product.ubicacion)}" 
+        allowfullscreen>
+    </iframe>`;
+    document.getElementById('productoUbicacion').innerHTML = mapsIframe;
 }
 
 // Display business (negocio) details
 function mostrarDetalleNegocio(negocio) {
-  
     document.getElementById('negocioImagen').src = negocio.imagen;
     document.getElementById('negocioNombre').textContent = negocio.nombre;
     document.getElementById('negocioCategoria').textContent = negocio.categoria;
     document.getElementById('negocioDescripcion').textContent = negocio.descripcion;
-    document.getElementById('negocioUbicacion').textContent = negocio.ubicacion;
-    // Hide product details when showing business details
+
+    // Generate Google Maps iframe
+    const mapsIframe = `<iframe 
+        width="100%" 
+        height="200" 
+        frameborder="0" 
+        style="border:0; margin-top: 10px;" 
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCDBBWwWfZSxUWUVasaKXWh9s5G8F3kZnA&q=${encodeURIComponent(negocio.ubicacion)}" 
+        allowfullscreen>
+    </iframe>`;
+    document.getElementById('negocioUbicacion').innerHTML = mapsIframe;
 }

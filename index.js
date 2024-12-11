@@ -80,6 +80,7 @@ app.get('/api/productosN', async (req, res) => {
 
 // Ruta para obtener negocios
 app.get('/api/negocios', (req, res) => {
+    
     const query = 'SELECT * FROM negocio'; // Cambia esto al nombre de tu tabla
 
     connection.query(query, (err, results) => {
@@ -96,6 +97,10 @@ app.get('/api/negocios', (req, res) => {
 // Página de inicio
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates/home.html'));
+});
+// Página de inicio
+app.get('/Experimentacion', (req, res) => {
+    res.sendFile(path.join(__dirname, 'templates/Experimentacion.html'));
 });
 
 // Página de ventas
@@ -195,7 +200,7 @@ app.post('/login', (req, res) => {
 // Ruta para verificar si el usuario está autenticado
 app.get('/is-authenticated', (req, res) => {
     if (req.session.loggedIn) {
-        const query = 'SELECT email FROM users WHERE username = ?';
+        const query = 'SELECT username FROM users WHERE username = ?';
         connection.query(query, [req.session.username], (err, results) => {
             if (err) {
                 console.error('Error al obtener el email:', err);
@@ -221,7 +226,6 @@ app.get('/is-authenticated2', (req, res) => {
                 console.error('Error al obtener el email:', err);
                 return res.status(500).json({ error: 'Error al obtener el email' });
             }
-
             if (results.length > 0) {
                 res.json({ authenticated: true, username: req.session.username, email: results[0].email });
             } else {
@@ -274,6 +278,45 @@ app.post('/register', (req, res) => {
         });
     });
 });
+// eliminar negocio
+app.delete('/api/delete-negocio/:id', (req, res) => {
+    const negocioId = req.params.id; // Extrae el ID del negocio desde la URL
+    const query = `DELETE FROM negocio WHERE id = ?`; // Consulta SQL para eliminar
+
+    connection.query(query, [negocioId], (err, results) => {
+        if (err) {
+            console.error('Error al eliminar negocio:', err);
+            return res.status(500).send('Error al eliminar negocio');
+        }
+
+        if (results.affectedRows === 0) {
+            return res.status(404).send('Negocio no encontrado');
+        }
+
+        res.send('Negocio eliminado exitosamente');
+    });
+});
+// eliminar producto
+app.delete('/api/delete-producto/:id', (req, res) => {
+    const productoId = req.params.id; // Extrae el ID del producto desde la URL
+    const query = `DELETE FROM producto WHERE id = ?`; // Consulta SQL para eliminar
+
+    connection.query(query, [productoId], (err, results) => {
+        if (err) {
+            console.error('Error al eliminar producto:', err);
+            return res.status(500).send('Error al eliminar producto');
+        }
+
+        if (results.affectedRows === 0) {
+            return res.status(404).send('Producto no encontrado');
+        }
+
+        res.send('Producto eliminado exitosamente');
+    });
+});
+
+
+
 
 // Cerrar sesión
 app.get('/logout', (req, res) => {

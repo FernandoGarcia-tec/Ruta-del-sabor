@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const productEmail = document.getElementById('productEmail').value;
-
-    fetch(`/api/negocios?categoria=${productEmail}`)
+    
+    fetch(`/api/negocios`)
         .then(response => response.json())
         .then(data => {
             console.log('API response data:', data); // Log the entire data object
+            
+            console.log('API response data length:', data.length); // Log the length of the data objects
             const cardNegocios = document.getElementById('cardNegocios');
             const Mensaje = document.getElementById('Mensaje');
             const MensajeLimite = document.getElementById('MensajeLimite');
@@ -23,10 +25,12 @@ document.addEventListener("DOMContentLoaded", function() {
             const imagenNegocio = data[0].imagen;
             data.forEach((negocio, index) => {
                 console.log(`Negocio ${index + 1}:`, negocio);
+                console.log('Nombre del negocio:', negocio.id);
                 // Create image element for each business
                 if (index === 0) {
                     document.getElementById("img2").src = negocio.imagen;
                     console.log('Imagen del negocio fut:', negocio.imagen, index);
+                    document.getElementById("negocioId").textContent = negocio.id;
                     document.getElementById("titulo").textContent = negocio.nombre;
                     console.log('Nombre del negocio:', negocio.nombre);
                 } else {

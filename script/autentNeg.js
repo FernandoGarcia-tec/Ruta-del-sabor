@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {// Esperar a que el DOM esté completamente cargado
     // Verificar si el usuario está autenticado
-    fetch('/is-authenticated')
+    fetch('/is-authenticated2')
         .then(response => response.json())
         .then(data => {
-            if (data.authenticated) {
+            if (data.authenticated ) {
                 // Ocultar el botón de login si el usuario está autenticado
                 const loginLink = document.getElementById("login-link");
                 if (loginLink) {
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {// Esperar a que el DO
 
                     // Completar el campo de email con el email del usuario
                     document.getElementById("productEmail").value = data.email; // Cambiado a 'value'
+                    console.log('Email del usuario:', data.email);
                 }
             }
             else {
