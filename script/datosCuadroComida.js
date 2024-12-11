@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('tabNegocios').addEventListener('click', function () {
         toggleSection('negocios');
     });
+    
 
     // Fetch and display products
     fetch('/api/products')

@@ -63,3 +63,4 @@ function loadProductsInCarousel(carouselId, products) {
         productCarousel.innerHTML += carouselItem; // Añadir el nuevo elemento
     });
 }
+

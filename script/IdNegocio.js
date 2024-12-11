@@ -5,3 +5,4 @@ function redirectToProducts(tituloId) {
     console.log(negocioNombre);
     window.location.href = `/salesV?nombreNegocio=${encodeURIComponent(negocioNombre, productCategory)}`;// Redirigir a la página de ventas con el nombre del negocio seleccionado
 }
+

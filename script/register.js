@@ -30,3 +30,4 @@ registerForm.addEventListener("submit", async (e) => {
         registerError.textContent = "Error al registrar. Intentar de nuevo.";
     }
 });
+

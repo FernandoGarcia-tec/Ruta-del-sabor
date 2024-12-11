@@ -52,3 +52,4 @@ async function cargarProductos() {
         console.error('Error al cargar productos:', error);
     }
 }
+

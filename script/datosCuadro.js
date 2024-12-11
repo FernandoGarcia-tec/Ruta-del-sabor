@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Filtrar solo los productos de la categoría 'Comida'
             const productosComida = data.filter(product => product.categoria === 'Comida');
 
+            
             // Añadir negocios de comida a la lista del directorio
             const listaNegocios = document.getElementById('listaNegocios');
             

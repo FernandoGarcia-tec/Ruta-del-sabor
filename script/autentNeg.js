@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {// Esperar a que el DO
                 if (loginLink) {
                     loginLink.style.display = "none";
                 }
+                
 
                 const welcomeMessage = document.getElementById("welcome-message");
                 if (welcomeMessage) {

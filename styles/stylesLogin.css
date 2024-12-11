@@ -15,6 +15,7 @@ body {
     height: 100vh; /* Altura de la ventana */
 }
 
+
 .login-container {
     background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
     padding: 20px;
