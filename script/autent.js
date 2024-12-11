@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             if (data.authenticated) {
-                // Ocultar el botón de login si el usuario está autenticado
+                // Ocultar el botón de login si el usuario está autenticado s
                 const loginLink = document.getElementById("login-link");
                 if (loginLink) {
                     loginLink.style.display = "none";
