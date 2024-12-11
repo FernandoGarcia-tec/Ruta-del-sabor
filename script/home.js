@@ -58,6 +58,7 @@ function loadProductsInCarousel(carouselId, products) {
                     </p>
                 </div>
             </div>
+            
         `;
         productCarousel.innerHTML += carouselItem; // Añadir el nuevo elemento
     });

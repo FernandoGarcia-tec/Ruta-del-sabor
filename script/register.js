@@ -23,6 +23,7 @@ registerForm.addEventListener("submit", async (e) => {
             createdAt: new Date()
         });
 
+        
         // Redirecciona al usuario a la página de login
         window.location.href = "/login";
     } catch (error) {

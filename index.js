@@ -296,6 +296,7 @@ app.delete('/api/delete-negocio/:id', (req, res) => {
         res.send('Negocio eliminado exitosamente');
     });
 });
+
 // eliminar producto
 app.delete('/api/delete-producto/:id', (req, res) => {
     const productoId = req.params.id; // Extrae el ID del producto desde la URL

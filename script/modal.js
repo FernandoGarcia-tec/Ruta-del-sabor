@@ -18,6 +18,7 @@
  }
 
  // Function to close modal
+ 
  function closeModal() {
  modal.style.display = "none";
  }

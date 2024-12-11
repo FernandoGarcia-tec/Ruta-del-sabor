@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function() {// Esperar a que el DO
                 const loginLink = document.getElementById("login-link");
                 if (loginLink) {
                     loginLink.style.display = "block";
+                    
                     window.location.href = "/login";
                 }
             }

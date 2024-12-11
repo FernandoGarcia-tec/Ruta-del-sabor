@@ -17,4 +17,5 @@ loginForm.addEventListener("submit", async (e) => {
     } catch (error) {
         loginError.textContent = "Error al iniciar sesión. Intentar de nuevo.";
     }
+    
 });

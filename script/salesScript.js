@@ -65,6 +65,7 @@ async function loadProducts() {
     }
 }
 
+
 // Cargar productos al iniciar
 window.onload = function() {
     loadProducts();

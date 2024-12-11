@@ -12,6 +12,7 @@ function eliminarProducto() {
                 return response.text(); // Devuelve el texto de la respuesta
             } else {
                 throw new Error(`Error al eliminar negocio: ${response.statusText}`);
+                
             }
         })
         .then(message => {
